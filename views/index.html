@@ -63,11 +63,6 @@
             appId: "1:261769511845:web:26d5a6a8ab0814fd639e4c",
             measurementId: "G-EE5N2XR631"
         }
-        const platform = new H.service.Platform({
-            'apikey': 'uD6iDXLk6zPGnHxXg1t-XiieVFHvac2CWGixV8RdJdE'
-        });
-        var geofencing = platform.getGeofencingService();
-
         $('#reroute').hide()
         firebase.initializeApp(FirebaseConfig);
         var database = firebase.database()
@@ -169,8 +164,9 @@
         var junctionCleared = false
         setInterval(async () => {
             if (status == "active") {
-               let result = await fetch(`/geofence/${z_lat},${z_lon}`)
-               console.log(result.body)
+               let response = await fetch(`/geofence/${z_lat},${z_lon}`)
+               let result = await response.json()
+               console.log(result)
                if (result.geometries.length > 0) {
                     console.log(result.geometries[0].attributes.NAME)
                     if (fence == result.geometries[0].attributes.NAME) {

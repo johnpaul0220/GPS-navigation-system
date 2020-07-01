@@ -95,3 +95,39 @@ body{
     top: 0px;
     box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.12);
 }
+
+#DriverId {
+    position: absolute;
+    width: 116px;
+    height: 18px;
+    left: 343px;
+    top: 230px;
+    font-family: 'Roboto Mono', monospace;
+    background: #C4C4C4;
+    border: 1px solid #000000;
+    box-sizing: border-box;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+#enterId {
+    position: absolute;
+    width: 116px;
+    height: 14px;
+    left: 343px;
+    top: 187px;
+    font-family: 'Roboto Mono', monospace;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 12px;
+    line-height: 14px;
+    color: #000000;
+}
+#submitDId {
+    font-family: 'Roboto Mono', monospace;
+    position: absolute;
+    width: 116px;
+    height: 22px;
+    left: 343px;
+    top: 260px;
+    border:none;
+    background: #AAD7F8;
+}

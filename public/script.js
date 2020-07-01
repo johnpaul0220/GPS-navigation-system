@@ -35,25 +35,25 @@ function displayRoute(directionsService, directionsRenderer, dash) {
             }
         });
 }
-function requestGeofence(layerId, position) {
-    return new Promise((resolve, request) => {
-        geofencing.request(
-            H.service.extension.geofencing.Service.EntryPoint.SEARCH_PROXIMITY,
-            {
-                "apikey": 'uD6iDXLk6zPGnHxXg1t-XiieVFHvac2CWGixV8RdJdE',
-                'layer_ids': layerId,
-                'proximity': position.lat + "," + position.lng,
-                'key_attributes': ['NAME']
-            },
-            result => {
-                resolve(result)
-            },
-            error => {
-                reject(error)
-            }
-        )
-    })
-}
+// function requestGeofence(layerId, position) {
+//     return new Promise((resolve, request) => {
+//         geofencing.request(
+//             H.service.extension.geofencing.Service.EntryPoint.SEARCH_PROXIMITY,
+//             {
+//                 "apikey": 'uD6iDXLk6zPGnHxXg1t-XiieVFHvac2CWGixV8RdJdE',
+//                 'layer_ids': layerId,
+//                 'proximity': position.lat + "," + position.lng,
+//                 'key_attributes': ['NAME']
+//             },
+//             result => {
+//                 resolve(result)
+//             },
+//             error => {
+//                 reject(error)
+//             }
+//         )
+//     })
+// }
 
 function sendMessage(receiver,message){
     return new Promise((resolve,reject)=>{
