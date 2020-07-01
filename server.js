@@ -26,13 +26,13 @@ app.get("/geofence/:latlng", (req,res)=>{
   let keyAttribute = 'NAME'
 
   const apiURL = `https://fleet.ls.hereapi.com/2/search/proximity.json?${layerID}&apikey=${HERE_API_KEY}&proximity=${proximity}&key_attribute=${keyAttribute}`
-  const data =  fetch(apiURL,{method:'GET'}).then(res=>{
-    const fenceData =  data.json()
+  fetch(apiURL,{method:'GET'}).then(result=>{
+    const fenceData =  result.json()
+    console.log(fenceData)
   }).then(fenceData=>{
     res.send(fenceData)
   })
 })
-
 
 app.get('/login',(req,res)=>{
   res.sendFile(__dirname+"/views/login.htm")
