@@ -24,8 +24,12 @@ app.get("/geofence/:latlng", async (req,res)=>{
   let proximity = req.params.latlng;
   console.log(proximity)
   let keyAttribute = 'NAME'
-  const apiURL = `https://fleet.ls.hereapi.com/2/search/proximity.json?${layerID}&apikey=${HERE_API_KEY}&proximity=${proximity}&key_attribute=${keyAttribute}`
-  let 
+  const apiURL = `https://fleet.ls.hereapi.com/2/search/proximity.json?layer_ids=${layerID}&apikey=${HERE_API_KEY}&proximity=${proximity}&key_attribute=${keyAttribute}`
+  console.log(apiURL)
+  let fence = await fetch(apiURL)
+  let fencedata = await fence.json()
+  await res.send(fencedata)
+  console.log(fencedata)
 })
 
 app.get('/login',(req,res)=>{
