@@ -169,11 +169,11 @@
         var junctionCleared = false
         setInterval(() => {
             if (status == "active") {
-                fetch(`/geofence${z_lat},${z_lon}`).then(response=>{
+                fetch(`/geofence/${z_lat},${z_lon}`).then(response=>{
                     console.log(response)
                 })               
             }
-        }, 10000)
+        }, 5000)
 
     </script>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCY0TMbAfmhJ-79FDCIp2oYu3JI1Gw7vk&libraries=places&callback=initMap"></script>
