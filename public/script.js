@@ -5,6 +5,16 @@ function addMarker(lat, lng) {
         title: 'current position'
     });
 }
+function locationPointer(lat, lng, map, circle) {
+    map.setCenter({
+        lat: lat,
+        lng: lng
+    })
+    circle.setCenter({
+        lat: lat,
+        lng: lng
+    })
+}
 function displayRoute(directionsService, directionsRenderer, dash) {
     var e_lat = dash.lat
     var e_lon = dash.lon
