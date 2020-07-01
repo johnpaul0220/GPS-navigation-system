@@ -1,4 +1,5 @@
 const express = require("express");
+const fetch = require('node-fetch');
 const app = express();
 const path = require("path");
 const { error } = require("console");
@@ -18,9 +19,15 @@ app.get("/", (request, response) => {
 });
 
 app.get("/geofence/:latlng",(req,res)=>{
-  const layerID = 'BIRLACROSS'
-  apiKey = process.env.HERE_API_KEY
-  apiURL = ''
+  const layerID = 'BIRLACROSS';
+  const HERE_API_KEY = process.env.HERE_API_KEY;
+  let proximity = req.params.latlng;
+  console.log(proximity)
+  let keyAttribute = 'NAME'
+  apiURL = `https://fleet.ls.hereapi.com/2/search/proximity.json?${layerID}&apikey=${HERE_API_KEY}&proximity=${proximity}&key_attribute=${keyAttribute}`
+  fetch(apiURL,{method:'GET'}).then(
+    
+  )
 })
 
 
