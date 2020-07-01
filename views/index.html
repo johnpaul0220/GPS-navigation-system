@@ -166,6 +166,8 @@
             if (status == "active") {
                let response = await fetch(`/geofence/${z_lat},${z_lon}`)
                let result = await response.json()
+               var temp =result.geometries[0].attributes.NAME
+                        let tempObj = temp.split("_")
                console.log(result)
                if (result.geometries.length > 0) {
                     console.log(result.geometries[0].attributes.NAME)

@@ -19,7 +19,7 @@ app.use(express.json({ limit: "1mb" }));
 // });
 
 app.get("/geofence/:latlng", async (req,res)=>{
-  const layerID = 'BIRLACROSS';
+  const layerID = 'TRAFFIC_LIGHT_FENCES';
   const HERE_API_KEY = process.env.HERE_API_KEY;
   let proximity = req.params.latlng;
   console.log(proximity)
