@@ -15,7 +15,7 @@ app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, 'assets')));
 app.use(express.json({limit:'1mb'}))
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/new5.html");
+  response.sendFile(__dirname + "/views/index.html");
 });
 
 app.post('/sendMessage',function (req,res) {
