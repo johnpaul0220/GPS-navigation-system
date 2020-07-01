@@ -165,11 +165,10 @@
         setInterval(async () => {
             if (status == "active") {
                let response = await fetch(`/geofence/${z_lat},${z_lon}`)
-               let result = await response.json()
-               var temp =result.geometries[0].attributes.NAME
-                        let tempObj = temp.split("_")
-               console.log(result)
+               let result = await response.json()             
                if (result.geometries.length > 0) {
+                    let temp =  result.geometries[0].attributes.NAME
+                    let tempObj = temp.split("_")
                     console.log(result.geometries[0].attributes.NAME)
                     if (fence == result.geometries[0].attributes.NAME) {
                         // note : do nothing youre in the same fence 
@@ -178,12 +177,12 @@
                         //entered a new fence
                         console.log("send message")
                         //+12024107229
-                        sendMessage('+919960085483',result.geometries[0].attributes.NAME)
+                        sendMessage(`+91${tempObj[2]}`,tempObj[1])
                         fence = result.geometries[0].attributes.NAME
                     }
                     else if (fence != result.geometries[0].attributes.NAME && fence != null) {
                         console.log("send end message")
-                        sendMessage('+919960085483',"END SEQUENCE")
+                        sendMessage(`+91${tempObj[2]}`,tempObj[1])
                         fence = result.geometries[0].attributes.NAME
                         var junctionCleared = true
                     }

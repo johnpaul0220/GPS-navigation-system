@@ -14,9 +14,14 @@ const listener = app.listen(process.env.PORT, () => {
 app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.json({ limit: "1mb" }));
-// app.get("/", (request, response) => {
-//   response.sendFile(__dirname + "/views/index.html");
-// });
+
+
+app.get('/login',(req,res)=>{
+  res.sendFile(__dirname+"/views/login.htm")
+})
+app.get("/", (request, response) => {
+  response.sendFile(__dirname + "/views/index.html");
+});
 
 app.get("/geofence/:latlng", async (req,res)=>{
   const layerID = 'TRAFFIC_LIGHT_FENCES';
@@ -32,9 +37,7 @@ app.get("/geofence/:latlng", async (req,res)=>{
   console.log(fencedata)
 })
 
-app.get('/',(req,res)=>{
-  res.sendFile(__dirname+"/views/login.htm")
-})
+
 app.post("/sendMessage", function(req, res) {
   console.log(req.body);
   const receiver = req.body.receiver;
