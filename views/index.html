@@ -169,33 +169,30 @@
         var junctionCleared = false
         setInterval(async () => {
             if (status == "active") {
-                fetch(`/geofence/${z_lat},${z_lon}`)
-                
-                then(result=>{
-                    console.log(result.geometries.length)
-                     if (result.geometries.length > 0) {
-                            console.log(result.geometries[0].attributes.NAME)
-                            if (fence == result.geometries[0].attributes.NAME) {
-                                // note : do nothing youre in the same fence 
-                            }
-                            else if (fence == null) {
-                                //entered a new fence
-                                console.log("send message")
-                                //+12024107229
-                                sendMessage('+919960085483',result.geometries[0].attributes.NAME)
-                                fence = result.geometries[0].attributes.NAME
-                            }
-                            else if (fence != result.geometries[0].attributes.NAME && fence != null) {
-                                console.log("send end message")
-                                sendMessage('+919960085483',"END SEQUENCE")
-                                fence = result.geometries[0].attributes.NAME
-                                var junctionCleared = true
-                            }
-                        }
-                        else if(junctionCleared){
-                            fence = false
-                        }
-                    })  
+               let result = await fetch(`/geofence/${z_lat},${z_lon}`)
+               console.log(result.body)
+               if (result.geometries.length > 0) {
+                    console.log(result.geometries[0].attributes.NAME)
+                    if (fence == result.geometries[0].attributes.NAME) {
+                        // note : do nothing youre in the same fence 
+                    }
+                    else if (fence == null) {
+                        //entered a new fence
+                        console.log("send message")
+                        //+12024107229
+                        sendMessage('+919960085483',result.geometries[0].attributes.NAME)
+                        fence = result.geometries[0].attributes.NAME
+                    }
+                    else if (fence != result.geometries[0].attributes.NAME && fence != null) {
+                        console.log("send end message")
+                        sendMessage('+919960085483',"END SEQUENCE")
+                        fence = result.geometries[0].attributes.NAME
+                        var junctionCleared = true
+                    }
+                }
+                else if(junctionCleared){
+                    fence = false
+                }
             }
         }, 5000)
 

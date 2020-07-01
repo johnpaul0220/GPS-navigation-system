@@ -28,7 +28,7 @@ app.get("/geofence/:latlng", async (req,res)=>{
   console.log(apiURL)
   let fence = await fetch(apiURL)
   let fencedata = await fence.json()
-  await res.send(fencedata)
+  await res.json(fencedata)
   console.log(fencedata)
 })
 
