@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/styles.css">
-    <script src="/script.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style.css">
+    <script src="/script.js" type= "text/javascript"></script>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 
@@ -168,7 +168,7 @@
         var junctionCleared = false
         setInterval(() => {
             if (status == "active") {
-                requestGeofence(["BIRLACROSS"], { lat: 15.377247, lng: 73.925651 }).
+                requestGeofence(["BIRLACROSS"], { lat: z_lat, lng: z_lon }).
                     then((result) => {
                         //in an ideal fence configuration this should work, this is all done without on locationS location testing
                         if (result.geometries.length > 0) {
@@ -200,20 +200,9 @@
 
             }
         }, 10000)
-        function locationPointer(lat, lng, map, circle) {
-            map.setCenter({
-                lat: lat,
-                lng: lng
-            })
-            circle.setCenter({
-                lat: lat,
-                lng: lng
-            })
-            map.zoom = 18
-        }
+
     </script>
-    <script
-        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCY0TMbAfmhJ-79FDCIp2oYu3JI1Gw7vk&libraries=places&callback=initMap"></script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCCY0TMbAfmhJ-79FDCIp2oYu3JI1Gw7vk&libraries=places&callback=initMap"></script>
 </body>
 
 </html>
