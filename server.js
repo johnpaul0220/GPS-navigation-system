@@ -17,6 +17,9 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
+app.get('login',(req,res)=>{
+  res.sendFile(__dirname+"/views/login.htm")
+})
 app.post("/sendMessage", function(req, res) {
   console.log(req.body);
   const receiver = req.body.receiver;
