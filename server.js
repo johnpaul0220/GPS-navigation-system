@@ -18,20 +18,14 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/index.html");
 });
 
-app.get("/geofence/:latlng", (req,res)=>{
+app.get("/geofence/:latlng", async (req,res)=>{
   const layerID = 'BIRLACROSS';
   const HERE_API_KEY = process.env.HERE_API_KEY;
   let proximity = req.params.latlng;
   console.log(proximity)
   let keyAttribute = 'NAME'
-
   const apiURL = `https://fleet.ls.hereapi.com/2/search/proximity.json?${layerID}&apikey=${HERE_API_KEY}&proximity=${proximity}&key_attribute=${keyAttribute}`
-  fetch(apiURL,{method:'GET'}).then(result=>{
-    const fenceData =  result.json()
-    console.log(fenceData)
-  }).then(fenceData=>{
-    res.send(fenceData)
-  })
+  let 
 })
 
 app.get('/login',(req,res)=>{
