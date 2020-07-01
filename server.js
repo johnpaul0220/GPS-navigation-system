@@ -14,10 +14,10 @@ app.use(express.static("public"));
 app.use(express.static(path.join(__dirname, "assets")));
 app.use(express.json({ limit: "1mb" }));
 app.get("/", (request, response) => {
-  response.sendFile(__dirname + "/views/index.html");
+  response.sendFile(__dirname + "/views/login.htm");
 });
 
-app.get('login',(req,res)=>{
+app.get('/login',(req,res)=>{
   res.sendFile(__dirname+"/views/login.htm")
 })
 app.post("/sendMessage", function(req, res) {

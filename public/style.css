@@ -6,20 +6,7 @@
     top: 0px;
     background: rgb(236, 236, 236);
 }
-#enterId{
-    position: absolute;
-    width: 116px;
-    height: 14px;
-    left: 343px;
-    top: 187px;
-    font-family: Roboto Mono;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 12px;
-    line-height: 14px;
-    color: #000000;
 
-}
 #userdetails{
     line-height:200%;
     position: absolute;
