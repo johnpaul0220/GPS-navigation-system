@@ -25,7 +25,14 @@
     <h4 id="enterId">Enter Driver ID:</h4>
     <input type="text" name="driver id" id="DriverId">
     <input id="submitDId" type="button" value="submit">
-    
+    <script>
+        $('#DriverId').val('1589040990617')
+        $('#submitDId').click(()=>{
+            console.log('hello')
+            let driverId = $('#DriverId').val()
+            console.log(driverId)
+        })
+    </script>
 </body>
 
 </html>
