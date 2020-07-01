@@ -17,6 +17,15 @@ app.get("/", (request, response) => {
   response.sendFile(__dirname + "/views/login.htm");
 });
 
+app.get("/geofence/:latlng",(req,res)=>{
+  const layerID = 'BIRLACROSS'
+  apiKey = process.env.HERE_API_KEY
+  apiURL = ''
+})
+
+
+
+
 app.get('/login',(req,res)=>{
   res.sendFile(__dirname+"/views/login.htm")
 })
