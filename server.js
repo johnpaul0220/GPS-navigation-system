@@ -7,7 +7,6 @@ const { error } = require("console");
 const accountSid = process.env.accountSid;
 const authToken = process.env.authToken;
 const client = require("twilio")(accountSid, authToken);
-// listen for requests :)
 const listener = app.listen(process.env.PORT, () => {
   console.log("Your app is listening on port " + listener.address().port);
 });
