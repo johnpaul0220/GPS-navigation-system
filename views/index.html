@@ -186,11 +186,11 @@
                         console.log("send end message")
                         sendMessage(`+91${tempObj[2]}`,tempObj[1])
                         fence = result.geometries[0].attributes.NAME
-                        var junctionCleared = true
+                        junctionCleared = true
                     }
                 }
                 else if(junctionCleared){
-                    fence = false
+                    fence = null
                     junctionCleared = false
 
                 }
