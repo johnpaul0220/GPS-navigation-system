@@ -166,30 +166,34 @@
             if (status == "active") {
                let response = await fetch(`/geofence/${z_lat},${z_lon}`)
                let result = await response.json()             
-               if (result.geometries.length > 0) {
-                    let temp =  result.geometries[0].attributes.NAME
-                    let tempObj = temp.split("_")
+              if (fence == result.geometries[0].attributes.NAME) {
+                    // note : do nothing youre in the same fence
+                    console.log('same fence')
+                }
+                else if (fence == null && result.geometries.length > 0) {
+                    //entered a new fence
                     console.log(result.geometries[0].attributes.NAME)
-                    if (fence == result.geometries[0].attributes.NAME) {
-                        // note : do nothing youre in the same fence 
-                    }
-                    else if (fence == null) {
-                        //entered a new fence
-                        console.log("send message")
-                        //+12024107229
-                        sendMessage(`+91${tempObj[2]}`,tempObj[1])
-                        fence = result.geometries[0].attributes.NAME
-                    }
-                    else if (fence != result.geometries[0].attributes.NAME && fence != null) {
-                        console.log("send end message")
-                        sendMessage(`+91${tempObj[2]}`,tempObj[1])
-                        fence = result.geometries[0].attributes.NAME
-                        var junctionCleared = true
-                    }
+                    console.log(`send start message at ${value}`)
+                    //+12024107229
+                    fence = result.geometries[0].attributes.NAME
+                    junctionCleared = false
+
                 }
-                else if(junctionCleared){
-                    fence = false
+                else if (fence != result.geometries[0].attributes.NAME && fence != null) {
+                    let endMarker = new H.map.Marker(latlng);
+                    map.addObject(endMarker);
+                    console.log(result.geometries[0].attributes.NAME)
+                    console.log(`send end message at ${value}`)
+                    //sendMessage(`+91${tempObj[2]}`,tempObj[1])
+                    fence = result.geometries[0].attributes.NAME
+                    junctionCleared = true
                 }
+            }
+            else if (junctionCleared) {
+                console.log("fence = false")
+                fence = null
+                junctionCleared = false
+            }
             }
         }, 5000)
 
